@@ -1,24 +1,26 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 4.1.0)
 
+include(CMakePrintHelpers)
 
-if("${CMAKE_GENERATOR}" STREQUAL "Visual Studio 17 2022")
-    # This can be done before or after project() on MSVC
-    # It works regardless of CMAKE_EXPERIMENTAL_CXX_IMPORT_STD
-    set(CMAKE_CXX_SCAN_FOR_MODULES ON)
-
-    # This does not work on MSVC
-    #set(CMAKE_CXX_MODULE_STD ON)
-else()
-    # Enables the Standard module support. This needs to be done before selecting the languages so the project() command
-    set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "0e5b6991-d74f-4b3d-a41c-cf096e0b2508")
-    set(CMAKE_CXX_MODULE_STD ON)
-
-	# Does not work reguardless of value of CMAKE_EXPERIMENTAL_CXX_IMPORT_STD
-    # set(CMAKE_CXX_SCAN_FOR_MODULES ON)
+if (NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 23)
 endif()
+
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "d0edc3af-4c50-42ea-a356-e2862fe7a444")
+# set(CMAKE_CXX_SCAN_FOR_MODULES ON)
+set(CMAKE_CXX_MODULE_STD ON)
 
 project("example")
 
-set(CMAKE_CXX_STANDARD 26)
+cmake_print_variables(
+    CMAKE_CXX_SCAN_FOR_MODULES
+    CMAKE_CXX_MODULE_STD 
+    CMAKE_CXX_COMPILER_IMPORT_STD)
 
-add_executable(main main.cpp)
+# cmake_print_variables(CMAKE_CXX_COMPILE_FEATURES)
+
+add_library(main SHARED main.cpp)
+
+# target_compile_features(main PUBLIC cxx_std_23)
