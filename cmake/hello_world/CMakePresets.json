@@ -1,0 +1,64 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "VS17",
+            "generator": "Visual Studio 17 2022"
+        },
+        {
+            "name": "VS18",
+            "generator": "Visual Studio 18 2026"
+        },
+        {
+            "name": "clang21",
+            "generator": "Ninja",
+            "cacheVariables": {
+
+                "CMAKE_CXX_FLAGS": "-stdlib=libc++",
+                "CMAKE_C_COMPILER": "/usr/lib/llvm-21/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/lib/llvm-21/bin/clang++"
+            }
+        },
+        {
+            "name": "clang22",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "-stdlib=libc++",
+                "CMAKE_C_COMPILER": "/usr/lib/llvm-22/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/lib/llvm-22/bin/clang++"
+            }
+        },
+        {
+            "name": "clang21-gcc-standard-library",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "/usr/lib/llvm-21/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/lib/llvm-21/bin/clang++"
+            }
+        },
+        {
+            "name": "clang22-gcc-standard-library",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "/usr/lib/llvm-22/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/lib/llvm-22/bin/clang++"
+            }
+        },
+        {
+            "name": "gcc15",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++-15",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc-15"
+            }
+        },
+        {
+            "name": "gcc16",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "/opt/gcc-latest/bin/g++",
+                "CMAKE_C_COMPILER": "/opt/gcc-latest/bin/gcc"
+            }
+        }
+    ]
+}
